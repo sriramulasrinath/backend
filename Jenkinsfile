@@ -15,8 +15,9 @@ pipeline{
             }
         }
         stage("test"){
-            steps{ """
-                sh 'echo this is test'
+            steps{ 
+                sh """
+                echo 'this is testing'
                 ls -ltr 
                 """
             }
