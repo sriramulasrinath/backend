@@ -7,24 +7,12 @@ pipeline{
         disableConcurrentBuilds()
         ansiColor('xterm')
     }
-    
-    stages{
-        stage("Build"){
-            steps{
-                sh 'echo this is build'
-            }
-        }
-        stage("test"){
+
+        stage("installing dependenciea"){
             steps{ 
                 sh """
-                echo 'this is testing'
-                ls -ltr 
+                npm install
                 """
-            }
-        }
-        stage("Deploy"){
-            steps{
-                sh 'echo this is deploy'
             }
         }
     }
