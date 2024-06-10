@@ -15,9 +15,10 @@ pipeline{
             }
         }
         stage("test"){
-            steps{
+            steps{ """
                 sh 'echo this is test'
-                'echo ls -ltr'
+                ls -ltr 
+                """
             }
         }
         stage("Deploy"){
