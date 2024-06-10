@@ -14,7 +14,6 @@ pipeline{
                 npm install
                 """
             }
-        }
     }
     post { 
         always { 
