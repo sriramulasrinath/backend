@@ -7,12 +7,26 @@ pipeline{
         disableConcurrentBuilds()
         ansiColor('xterm')
     }
+    environment{
+        def appVersion = '' //variable declaration
+    }
     stages{
+        stage("read the version"){
+            steps{ 
+                script{
+                def packageJson = readJSON file: 'package.json'
+                appVersion = packageJson.appversion
+                echo "application version: $appVersion"
+                }
+            }
+        }
         stage("installing dependencies"){
             steps{ 
                 sh """
                 npm install
                 ls -ltr
+                echo $appVersion
+                echo "application version: $appVersion"
                 """
             }
         }
