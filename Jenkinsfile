@@ -37,6 +37,27 @@ pipeline{
                 """
             }
         }
+        stage('nexus artifactory uploading'){
+            steps{
+                script{
+                    nexusArtifactUploader(
+                    nexusVersion: 'nexus3',
+                    protocol: 'http',
+                    nexusUrl: 'http://52.23.248.89:8081/repository/backend/',
+                    groupId: 'com.expense',
+                    version: "${appVersion}",
+                    repository: 'backend',
+                    credentialsId: 'nexus-auth',
+                    artifacts: [
+                        [artifactId: projectName,
+                        classifier: '',
+                        file: 'backend-' + "${appVersion}" + '.zip',
+                        type: 'zip']
+                        ]
+                    )
+                }
+            }
+        }
     }
     post { 
         always { 
