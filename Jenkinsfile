@@ -9,6 +9,7 @@ pipeline{
     }
     environment{
         def appVersion = '' //variable declaration
+        nexusUrl = "nexus.srinath.online:8081"
     }
     stages{
         stage("read the version"){
@@ -43,7 +44,7 @@ pipeline{
                     nexusArtifactUploader(
                         nexusVersion: 'nexus3',
                         protocol: 'http',
-                        nexusUrl: 'http://52.23.248.89:8081/repository/backend/',
+                        nexusUrl: "${nexusUrl}"
                         groupId: 'com.expense',
                         version: "${appVersion}",
                         repository: 'backend',
