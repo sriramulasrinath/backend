@@ -45,7 +45,7 @@ pipeline{
                         nexusVersion: 'nexus3',
                         protocol: 'http',
                         nexusUrl: "${nexusUrl}"
-                        groupId: 'com.Expense',
+                        groupId: 'com.expense',
                         version: "${appVersion}",
                         repository: 'backend',
                         credentialsId: 'nexus-auth',
