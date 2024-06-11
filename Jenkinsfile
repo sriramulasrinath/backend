@@ -38,6 +38,27 @@ pipeline{
                 """
             }
         }
+        // stage('nexus artifactory upload'){
+        //     steps{
+        //        script{
+        //          nexusArtifactUploader(
+        //             nexusVersion: 'nexus3',
+        //             protocol: 'http',
+        //             nexusUrl: 'http://44.211.40.162:8081/repository/backend/',
+        //             groupId: 'com.expense',
+        //             version: "${appVersion}",
+        //             repository: 'backend',
+        //             credentialsId: 'nexus-auth',
+        //             artifacts: [
+        //                 [artifactId: "backend",
+        //                 classifier: '',
+        //                 file: 'backend-' + "${appVersion}" + '.zip',
+        //                 type: 'zip']
+        //             ]
+        //          )
+        //        }
+        //     }
+        // }
     }
     post { 
         always { 
