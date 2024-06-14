@@ -38,6 +38,22 @@ pipeline{
                 """
             }
         }
+        stage('Sonar Scan') {
+            environment {
+                scannerHome = tool 'sonar-6.0' //--> which version i want mentioned here referring scanner CLI
+            }
+            steps {
+                script {
+                    withSonarQubeEnv('sonar-6.0') { // refering the server
+                        sh "${scannerHome}/bin/sonar-scanner \
+                            -Dsonar.projectKey=<project-key> \
+                            -Dsonar.projectName=<project-name> \
+                            -Dsonar.projectVersion=<project-version> \
+                            -Dsonar.sources=<project-path>"
+                    }
+                }
+            }
+        }
         stage('nexus artifactory uploading'){
             steps{
                 script{
